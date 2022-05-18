@@ -1,19 +1,22 @@
 # Copyright (C) 2020 Adek Maulana
+#
 # SPDX-License-Identifier: GPL-3.0-or-later
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU General Public License for more details.
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-# copyright (C) mrismanaziz
-# Gojo-Userbot < https://github.com/Cloder07/Gojo-Userbot >
-# ReCode @Daijobu69
+# Recode by @mrismanaziz
+# FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
+#
 
 
 import asyncio
@@ -24,7 +27,7 @@ import re
 import shlex
 import time
 from os.path import basename
-from typing import Optional, Union
+from typing import Optional, Tuple, Union
 
 from emoji import get_emoji_regexp
 from hachoir.metadata import extractMetadata
@@ -56,22 +59,23 @@ async def md5(fname: str) -> str:
 
 
 def media_type(message):
-    if message and message.photo:
-        return "Photo"
-    if message and message.audio:
-        return "Audio"
-    if message and message.voice:
-        return "Voice"
-    if message and message.video_note:
-        return "Round Video"
-    if message and message.gif:
-        return "Gif"
-    if message and message.sticker:
-        return "Sticker"
-    if message and message.video:
-        return "Video"
-    if message and message.document:
-        return "Document"
+    if message:
+        if message.photo:
+            return "Photo"
+        if message.audio:
+            return "Audio"
+        if message.voice:
+            return "Voice"
+        if message.video_note:
+            return "Round Video"
+        if message.gif:
+            return "Gif"
+        if message.sticker:
+            return "Sticker"
+        if message.video:
+            return "Video"
+        if message.document:
+            return "Document"
     return None
 
 
@@ -85,7 +89,7 @@ def humanbytes(size: Union[int, float]) -> str:
     while size > power:
         size /= power
         raised_to_pow += 1
-    return str(round(size, 2)) + " " + dict_power_n[raised_to_pow] + "B"
+    return f"{str(round(size, 2))} {dict_power_n[raised_to_pow]}B"
 
 
 def time_formatter(seconds: int) -> str:
@@ -93,20 +97,21 @@ def time_formatter(seconds: int) -> str:
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
     tmp = (
-        ((str(days) + " hari, ") if days else "")
-        + ((str(hours) + " jam, ") if hours else "")
-        + ((str(minutes) + " menit, ") if minutes else "")
-        + ((str(seconds) + " detik, ") if seconds else "")
+        (f"{str(days)} hari, " if days else "")
+        + (f"{str(hours)} jam, " if hours else "")
+        + (f"{str(minutes)} menit, " if minutes else "")
+        + (f"{str(seconds)} detik, " if seconds else "")
     )
+
     return tmp[:-2]
 
 
-async def extract_time(man, time_val):
+async def extract_time(poci, time_val):
     if any(time_val.endswith(unit) for unit in ("s", "m", "h", "d", "w")):
         unit = time_val[-1]
         time_num = time_val[:-1]
         if not time_num.isdigit():
-            await man.edit("Jumlah waktu yang ditentukan tidak valid.")
+            await poci.edit("Jumlah waktu yang ditentukan tidak valid.")
             return None
         if unit == "s":
             bantime = int(time.time() + int(time_num) * 1)
@@ -119,12 +124,12 @@ async def extract_time(man, time_val):
         elif unit == "w":
             bantime = int(time.time() + int(time_num) * 7 * 24 * 60 * 60)
         else:
-            await man.edit(
+            await poci.edit(
                 f"**Jenis waktu yang dimasukan tidak valid. Harap masukan** s, m , h , d atau w tapi punya: `{time_val[-1]}`"
             )
             return None
         return bantime
-    await man.edit(
+    await poci.edit(
         f"**Jenis waktu yang dimasukan tidak valid. Harap Masukan** s, m , h , d atau w tapi punya: `{time_val[-1]}`"
     )
     return None
@@ -155,7 +160,7 @@ async def is_admin(chat_id, user_id):
     )
 
 
-async def runcmd(cmd: str) -> tuple[str, str, int, int]:
+async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
     """run command in terminal"""
     args = shlex.split(cmd)
     process = await asyncio.create_subprocess_exec(
@@ -228,7 +233,7 @@ async def edit_or_reply(
     if aslink or deflink:
         linktext = linktext or "**Pesan Terlalu Panjang**"
         response = await paste_message(text, pastetype="s")
-        text = linktext + f" [Lihat Disini]({response})"
+        text = f"{linktext} [Lihat Disini]({response})"
         if not event.out and event.sender_id in SUDO_USERS:
             if reply_to:
                 return await reply_to.reply(text, link_preview=link_preview)
@@ -282,7 +287,7 @@ async def check_media(reply_message):
     return data
 
 
-async def run_cmd(cmd: list) -> tuple[bytes, bytes]:
+async def run_cmd(cmd: list) -> Tuple[bytes, bytes]:
     process = await asyncio.create_subprocess_exec(
         *cmd,
         stdout=asyncio.subprocess.PIPE,
@@ -311,8 +316,8 @@ async def bash(cmd):
 
 def post_to_telegraph(title, html_format_content):
     post_client = TelegraphPoster(use_api=True)
-    auth_name = "Gojo-Userbot"
-    auth_url = "https://github.com/Cloder07/Gojo-Userbot"
+    auth_name = "PocongUserbot"
+    auth_url = "https://github.com/poocong/PocongUserbot"
     post_client.create_api_token(auth_name)
     post_page = post_client.post(
         title=title,
@@ -346,20 +351,6 @@ async def edit_delete(event, text, time=None, parse_mode=None, link_preview=None
 
 eod = edit_delete
 
-def text_set(text):
-    lines = []
-    if len(text) <= 55:
-        lines.append(text)
-    else:
-        all_lines = text.split("\n")
-        for line in all_lines:
-            if len(line) <= 55:
-                lines.append(line)
-            else:
-                k = len(line) // 55
-                for z in range(1, k + 2):
-                    lines.append(line[((z - 1) * 55) : (z * 55)])
-    return lines[:25]
 
 async def media_to_pic(event, reply):
     mediatype = media_type(reply)
@@ -372,15 +363,19 @@ async def media_to_pic(event, reply):
     media = await reply.download_media(file="./temp")
     event = await edit_or_reply(event, "`Transfiguration Time! Converting....`")
     file = os.path.join("./temp/", "meme.png")
-    if mediatype == "Sticker":
-        if media.endswith(".tgs"):
-            await runcmd(
-                f"lottie_convert.py --frame 0 -if lottie -of png '{media}' '{file}'"
-            )
-        elif media.endswith(".webp"):
-            im = Image.open(media)
-            im.save(file)
-    elif mediatype in ["Round Video", "Video", "Gif"]:
+    if mediatype == "Sticker" and media.endswith(".tgs"):
+        await runcmd(
+            f"lottie_convert.py --frame 0 -if lottie -of png '{media}' '{file}'"
+        )
+    elif (
+        mediatype == "Sticker"
+        and not media.endswith(".tgs")
+        and media.endswith(".webp")
+        or mediatype not in ["Sticker", "Round Video", "Video", "Gif"]
+    ):
+        im = Image.open(media)
+        im.save(file)
+    elif mediatype != "Sticker" or media.endswith(".tgs") or media.endswith(".webp"):
         extractMetadata(createParser(media))
         await runcmd(f"rm -rf '{file}'")
         await take_screen_shot(media, 0, file)
@@ -390,9 +385,6 @@ async def media_to_pic(event, reply):
                 f"**Maaf. Saya tidak dapat mengekstrak gambar dari ini {mediatype}**",
             )
             return None
-    else:
-        im = Image.open(media)
-        im.save(file)
     await runcmd(f"rm -rf '{media}'")
     return [event, file, mediatype]
 
