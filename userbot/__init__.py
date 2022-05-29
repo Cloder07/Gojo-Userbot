@@ -139,7 +139,6 @@ SUDO_HANDLER = os.environ.get("SUDO_HANDLER", r"!")
 # Support
 GROUP = os.environ.get("GROUP", "GojoSupport")
 CHANNEL = os.environ.get("CHANNEL", "GojoProjct")
-BYPASS_URL = os.environ.get("BYPASS_URL", "@bypassvip_bot")
 
 # Heroku Credentials for updater.
 HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
