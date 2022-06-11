@@ -13,7 +13,6 @@ import sys
 from importlib import import_module
 
 import requests
-from pytgcalls import idle
 from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest
 from userbot import BOT_TOKEN, BOT_USERNAME, BOT_VER, BOTLOG_CHATID
 from userbot import CMD_HANDLER as cmd
@@ -80,7 +79,6 @@ bot.loop.run_until_complete(checking())
 bot.loop.run_until_complete(pocong_userbot_on())
 if not BOT_TOKEN:
     bot.loop.run_until_complete(autobot())
-idle()
 if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
 else:
