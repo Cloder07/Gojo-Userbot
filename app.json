@@ -1,9 +1,6 @@
 {
   "name": "Gojo-Userbot",
   "description": "[Gojo-Userbot] userbot Telegram modular yang berjalan pada Python 3.9+",
-  "logo": "https://telegra.ph/file/142cb25695c36bc08211d.jpg",
-  "keywords": ["telegram", "userbot", "Gojo-Userbot", "modular", "python"],
-  "repository": "https://github.com/Cloder07/Gojo-Userbot",
   "stack": "container",
   "env": {
     "API_KEY": {
@@ -18,10 +15,6 @@
       "description": "Buat Bot di t.me/botfather Masukan BOT tokennya disini",
       "required": false
     },
-    "BOT_USERNAME": {
-      "description": "Buat Bot di t.me/botfather Masukan BOT Usernamenya pake @",
-      "required": false
-    },
      "STRING_SESSION": {
       "description": "Dapatkan String Session di Grup » https://t.me/GojoSupport » Lalu ketik #string",
       "required": true
@@ -33,13 +26,8 @@
     "HEROKU_API_KEY": {
       "description": "Ambil Heroku API KEY mu disini » https://dashboard.heroku.com/account",
       "required": true
-    },
-    "PM_AUTO_BAN": {
-      "description": "PM Auto-Ban adalah module untuk bot welcome otomatis ketika ada orang ngePC kamu, jika Mau di matikan ubah ke False",
-      "value": "True",
-      "required": false
-    }
-  },
+   }
+ },
   "addons": [
     {
     "plan": "heroku-postgresql",
