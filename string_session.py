@@ -5,7 +5,7 @@
 # you may not use this file except in compliance with the License.
 #
 
-from telethon.sessions import StringSession
+from telethon.sessions import StringSession, STRING_2, STRING_3, STRING_4, STRING_5, STRING_6, STRING_7, STRING_8, STRING_9, STRING_10
 from telethon.sync import TelegramClient
 
 print(
