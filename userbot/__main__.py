@@ -61,9 +61,6 @@ LOGS.info(f"Total Clients = {total} User")
     LOGS.info("[✨ BERHASIL DIAKTIFKAN! ✨]")
 except (ConnectionError, KeyboardInterrupt, NotImplementedError, SystemExit):
     pass
-except BaseException as e:
-    LOGS.info(str(e), exc_info=True)
-    sys.exit(1)
 
 if not BOTLOG_CHATID:
     LOGS.info(
