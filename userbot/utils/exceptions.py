@@ -21,3 +21,6 @@ class CancelProcess(Exception):
 
 class FFmpegReturnCodeError(Exception):
     pass
+
+class DependencyMissingError(Exception):
+    pass
