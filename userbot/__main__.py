@@ -38,9 +38,6 @@ try:
             "MAKANYA GA USAH BERTINGKAH GOBLOK. USERBOTnya GUA MATIIN NAJISS BET DIPAKE BOCIL KEK LU.\nCredits: @GojoProjct"
         )
         sys.exit(1)
-except Exception as e:
-    LOGS.info(str(e), exc_info=True)
-    sys.exit(1)
 
 for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
@@ -59,8 +56,11 @@ LOGS.info(f"Total Clients = {total} User")
     LOGS.info(f"Userbot Version - {ubotversion} •[{adB.name}]•")
     LOGS.info(f"Gojo Version - {gojo_version} •[{HOSTED_ON}]•")
     LOGS.info("[✨ BERHASIL DIAKTIFKAN! ✨]")
-except (ConnectionError, KeyboardInterrupt, NotImplementedError, SystemExit):
+ except (ConnectionError, KeyboardInterrupt, NotImplementedError, SystemExit):
     pass
+ except BaseException as e:
+    LOGS.info(str(e), exc_info=True)
+    sys.exit(1)
 
 if not BOTLOG_CHATID:
     LOGS.info(
