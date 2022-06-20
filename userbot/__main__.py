@@ -38,7 +38,7 @@ except Exception as e:
 
 for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
-adB = AyiinDB()
+adB = GojoDB()
     client = multiayiin()
     total = 10 - client
     git()
