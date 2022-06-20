@@ -11,7 +11,12 @@
 
 import sys
 from importlib import import_module
+from platform import python_version
 
+from pytgcalls import __version__ as pytgcalls
+from pytgcalls import idle
+from telethon import version
+from telethon.tl.alltlobjects import LAYER
 import requests
 from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest
 from userbot import BOT_TOKEN, BOT_USERNAME, BOT_VER, BOTLOG_CHATID
