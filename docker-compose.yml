@@ -4,7 +4,7 @@ services:
 
   worker: Dockerfile
 
-    build: .
+    build: bash start
 
     environment:
 
