@@ -14,6 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 from . import format as _format
+from ._baseyins import GojoDB
+from ._hosting import HOSTED_ON
 from .chrome import chrome, options
 from .decorator import asst_cmd, callback, chataction, poci_cmd, pocong_handler
 from .events import checking, get_user_from_event
