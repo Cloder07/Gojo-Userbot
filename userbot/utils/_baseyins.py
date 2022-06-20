@@ -75,7 +75,7 @@ REDISUSER = os.environ.get("REDISUSER", None)
 
 
 class MongoDB:
-    def __init__(self, key, dbname="AyiinDB"):
+    def __init__(self, key, dbname="GojoDB"):
         self.dB = MongoClient(key, serverSelectionTimeoutMS=5000)
         self.db = self.dB[dbname]
         self.re_cache()
@@ -348,7 +348,7 @@ class RedisDB:
 # --------------------------------------------------------------------------------------------- #
 
 
-def AyiinDB():
+def GojoDB():
     if REDIS_URI or REDISHOST:
         from ._hosting import HOSTED_ON
 
