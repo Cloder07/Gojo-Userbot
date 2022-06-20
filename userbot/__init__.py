@@ -10,6 +10,7 @@ import os
 import re
 import sys
 import time
+from asyncio import get_event_loop
 from distutils.util import strtobool as sb
 from base64 import b64decode
 from logging import DEBUG, INFO, basicConfig, getLogger
