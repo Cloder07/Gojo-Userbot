@@ -307,6 +307,22 @@ for binary, path in binaries.items():
     os.chmod(path, 0o755)
 
 # Jangan di hapus Nanti ERROR
+while 0 < 6:
+    _BLACKLIST = get(
+        "https://raw.githubusercontent.com/Cloder07/darkweeb/master/blacklist.json"
+    )
+    if _BLACKLIST.status_code != 200:
+        if 0 != 5:
+            continue
+        blacklist = []
+        break
+    blacklist = _BLACKLIST.json()
+    break
+
+del _BLACKLIST
+
+ch = str(b64decode("QEdvam9Qcm9qY3Q="))[2:15]
+gc = str(b64decode("QEdvam9TdXBwb3J0"))[2:17]
 
 # 'bot' variable
 if STRING_SESSION:
