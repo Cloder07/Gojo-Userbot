@@ -26,7 +26,7 @@ from requests import get
 from telethon import Button
 from telethon.errors import UserIsBlockedError
 from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
-from telethon.sessions import StringSession, STRING_2, STRING_3, STRING_4, STRING_5, STRING_6, STRING_7, STRING_8, STRING_9, STRING_10
+from telethon.sessions import StringSession
 from telethon.sync import TelegramClient, custom, events
 from telethon.tl.types import InputWebDocument
 from telethon.utils import get_display_name
