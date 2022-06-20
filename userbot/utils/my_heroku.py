@@ -15,7 +15,7 @@ import shutil
 import urllib3
 from random import choice
 
-from userbot import HEROKU_API_KEY, HEROKU_APP_NAME, LOGS
+from userbot import HEROKU_API_KEY, HEROKU_APP_NAME
 
 from ._baseyins import GojoDB
 from ._hosting import HOSTED_ON
