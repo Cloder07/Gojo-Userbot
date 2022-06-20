@@ -17,7 +17,7 @@ from pytgcalls import __version__ as pytgcalls
 from pytgcalls import idle
 from telethon import version
 from telethon.tl.alltlobjects import LAYER
-from userbot import BOTLOG_CHATID, BOT_TOKEN
+from userbot import BOTLOG_CHATID, BOT_TOKEN, LOOP
 from userbot.clients import pocong_userbot_on, multigojo
 from userbot import LOGS, bot
 from userbot.modules import ALL_MODULES
