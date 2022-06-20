@@ -1,22 +1,21 @@
 {
-  "name": "Gojo-Userbot",
-  "description": "[Gojo-Userbot] userbot Telegram modular yang berjalan pada Python 3.9+",
+  "name": "⋆ ☸GOJO-USERBOT☸ ⋆",
+  "description": "[Gojo-Userbot] Userbot Hanya Untuk Bersenang - Senang",
+  "logo": "https://telegra.ph/file/c6a0aef41355af5a018c6.jpg",
+  "keywords": ["telegram", "userbot", "Gojo-Userbot", "modular", "python"],
+  "repository": "https://github.com/Cloder07/Gojo-Userbot",
   "stack": "container",
   "env": {
     "API_KEY": {
-      "description": "Dapatkan API KEY di web my.telegram.org Masukan yg APP ID Telegram",
+      "description": "Dapatkan API KEY di Grup » https://t.me/GojoSupport » Lalu ketik /get api atau di web my.telegram.org Masukan yg APP ID Telegram",
       "required": true
     },
     "API_HASH": {
-      "description": "Dapatkan API Hash di web my.telegram.org",
+      "description": "Dapatkan API Hash di Grup » https://t.me/GojoSupport » Lalu ketik /get api atau di web my.telegram.org",
       "required": true
     },
-    "BOT_TOKEN": {
-      "description": "Buat Bot di t.me/botfather Masukan BOT tokennya disini",
-      "required": false
-    },
      "STRING_SESSION": {
-      "description": "Dapatkan String Session di Grup » https://t.me/GojoSupport » Lalu ketik #string",
+      "description": "Dapatkan String Session di Grup » https://t.me/GojoSupport » Lalu ketik /get string",
       "required": true
     },
     "HEROKU_APP_NAME": {
@@ -26,8 +25,13 @@
     "HEROKU_API_KEY": {
       "description": "Ambil Heroku API KEY mu disini » https://dashboard.heroku.com/account",
       "required": true
-   }
- },
+    },
+    "PM_AUTO_BAN": {
+      "description": "PM Auto-Ban adalah module untuk bot welcome otomatis ketika ada orang ngePC kamu, jika Mau di matikan ubah ke False",
+      "value": "True",
+      "required": false
+    }
+  },
   "addons": [
     {
     "plan": "heroku-postgresql",
@@ -45,7 +49,7 @@
     }
   ],
   "formation": {
-    "worker": {
+    "ayiin": {
       "quantity": 1,
       "size": "free"
     }
