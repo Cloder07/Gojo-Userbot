@@ -17,14 +17,11 @@ from pytgcalls import __version__ as pytgcalls
 from pytgcalls import idle
 from telethon import version
 from telethon.tl.alltlobjects import LAYER
-import requests
-from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest
-from userbot import BOT_TOKEN, BOT_USERNAME, BOT_VER, BOTLOG_CHATID
+from userbot import BOTLOG_CHATID, BOT_TOKEN
 from userbot.clients import pocong_userbot_on, multigojo
-from userbot import CMD_HANDLER as cmd
-from userbot import LOGS, bot, branch, call_py
+from userbot import LOGS, bot
 from userbot.modules import ALL_MODULES
-from userbot.utils import GojoDB, HOSTED_ON, autopilot, autobot, checking, gojo_version
+from userbot.utils import GojoDB, HOSTED_ON, autobot, autopilot, gojo_version
 
 try:
     for module_name in ALL_MODULES:
