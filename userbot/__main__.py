@@ -27,78 +27,36 @@ from userbot.modules import ALL_MODULES
 from userbot.utils import GojoDB, HOSTED_ON, autopilot, autobot, checking, gojo_version
 
 try:
-    bot.start()
-    call_py.start()
-    user = bot.get_me()
-    blacklist = requests.get(
-        "https://raw.githubusercontent.com/Cloder07/darkweeb/main/blacklist.json"
-    ).json()
-    if user.id in blacklist:
-        LOGS.warning(
-            "MAKANYA GA USAH BERTINGKAH GOBLOK. USERBOTnya GUA MATIIN NAJISS BET DIPAKE BOCIL KEK LU.\nCredits: @GojoProjct"
-        )
-        sys.exit(1)
-try:
-for module_name in ALL_MODULES:
-    imported_module = import_module("userbot.modules." + module_name)
-adB = GojoDB()
+    for module_name in ALL_MODULES:
+        imported_module = import_module(f"userbot.modules.{module_name}")
+    adB = GojoDB()
     client = multigojo()
     total = 10 - client
     git()
-LOGS.info(
-    f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/GojoSupport"
-)
-
-LOGS.info(f"Total Clients = {total} User")
+    LOGS.info(f"Total Clients = {total} User")
     LOGS.info(f"Python Version - {python_version()}")
     LOGS.info(f"Telethon Version - {version.__version__} [Layer: {LAYER}]")
     LOGS.info(f"PyTgCalls Version - {pytgcalls.__version__}")
     LOGS.info(f"Userbot Version - {ubotversion} •[{adB.name}]•")
     LOGS.info(f"Gojo Version - {gojo_version} •[{HOSTED_ON}]•")
     LOGS.info("[✨ BERHASIL DIAKTIFKAN! ✨]")
- except (ConnectionError, KeyboardInterrupt, NotImplementedError, SystemExit):
+except (ConnectionError, KeyboardInterrupt, NotImplementedError, SystemExit):
     pass
- except BaseException as e:
+except BaseException as e:
     LOGS.info(str(e), exc_info=True)
     sys.exit(1)
 
+
+LOOP.run_until_complete(pocong_userbot_on())
 if not BOTLOG_CHATID:
-    LOGS.info(
-        "Vars BOTLOG_CHATID tidak terisi, Proses Membuat Grup Otomatis."
-    )
-    bot.loop.run_until_complete(autopilot())
-
-async def pocong_userbot_on():
-    try:
-        if BOTLOG_CHATID != 0:
-            await bot.send_message(
-                BOTLOG_CHATID,
-                f"🔥 **Gojo-Userbot Berhasil Di Aktifkan**\n━━\n➠ **Userbot Version -** `{BOT_VER}@{branch}`\n➠ **Ketik** `{cmd}alive` **untuk Mengecheck Bot**\n━━",
-            )
-    except Exception as e:
-        LOGS.info(str(e))
-    try:
-        await bot(JoinChannelRequest("@GojoProjct"))
-    except BaseException:
-        pass
-    try:
-        await bot(InviteToChannelRequest(int(BOTLOG_CHATID), [BOT_USERNAME]))
-    except BaseException:
-        pass
-    try:
-        await bot(JoinChannelRequest("@GojoSupport"))
-    except BaseException:
-        pass
-    
-
-
-bot.loop.run_until_complete(checking())
-bot.loop.run_until_complete(pocong_userbot_on())
+    LOOP.run_until_complete(autopilot())
 if not BOT_TOKEN:
-    bot.loop.run_until_complete(autobot())
+    LOOP.run_until_complete(autobot())
+idle()
 if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
 else:
-    bot.run_until_disconnected()
-except ConnectionError:
+    try:
+        bot.run_until_disconnected()
+    except ConnectionError:
         pass
