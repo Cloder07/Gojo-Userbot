@@ -38,7 +38,7 @@ try:
             "MAKANYA GA USAH BERTINGKAH GOBLOK. USERBOTnya GUA MATIIN NAJISS BET DIPAKE BOCIL KEK LU.\nCredits: @GojoProjct"
         )
         sys.exit(1)
-
+try:
 for module_name in ALL_MODULES:
     imported_module = import_module("userbot.modules." + module_name)
 adB = GojoDB()
