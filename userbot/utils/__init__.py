@@ -44,3 +44,4 @@ from .tools import (
     time_formatter,
 )
 from .utils import autobot, load_module, remove_plugin, start_assistant, autopilot
+from .version import __version__, gojo_version
