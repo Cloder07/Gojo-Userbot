@@ -8,6 +8,10 @@ RUN git clone -b Gojo-Userbot https://github.com/Cloder07/Gojo-Userbot /home/Goj
     && chmod 777 /home/Gojo-Userbot \
     && mkdir /home/Gojo-Userbot/bin/
 
+COPY ./sample_config.env ./config.env* /home/Gojo-Userbot/
+
 WORKDIR /home/Gojo-Userbot/
+
+RUN pip install -r requirements.txt
 
 CMD [ "bash", "start" ]
