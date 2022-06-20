@@ -560,9 +560,11 @@ def ibuild_keyboard(buttons):
 with bot:
     try:
         from userbot.modules.sql_helper.bot_blacklists import check_is_black_list
+        from userbot.modules import GojoDB, HOSTED_ON, reply_id
         from userbot.modules.sql_helper.bot_pms_sql import add_user_to_db, get_user_id
         from userbot.utils import reply_id
 
+        adB = GojoDB()
         dugmeler = CMD_HELP
         user = bot.get_me()
         uid = user.id
