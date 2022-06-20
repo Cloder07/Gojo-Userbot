@@ -119,6 +119,15 @@ API_HASH = str(os.environ.get("API_HASH") or None)
 
 # Userbot Session String
 STRING_SESSION = os.environ.get("STRING_SESSION", None)
+STRING_2 = os.environ.get("STRING_2", None)
+STRING_3 = os.environ.get("STRING_3", None)
+STRING_4 = os.environ.get("STRING_4", None)
+STRING_5 = os.environ.get("STRING_5", None)
+STRING_6 = os.environ.get("STRING_6", None)
+STRING_7 = os.environ.get("STRING_7", None)
+STRING_8 = os.environ.get("STRING_8", None)
+STRING_9 = os.environ.get("STRING_9", None)
+STRING_10 = os.environ.get("STRING_10", None)
 
 # Logging channel/group ID configuration.
 BOTLOG_CHATID = int(os.environ.get("BOTLOG_CHATID") or 0)
@@ -316,6 +325,139 @@ except Exception as e:
     print(f"STRING_SESSION - {e}")
     sys.exit()
 
+if STRING_2:
+    session2 = StringSession(str(STRING_2))
+    AYIIN2 = TelegramClient(
+        session=session2,
+        api_id=API_KEY,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+    call_py2 = PyTgCalls(GOJO2)
+else:
+    call_py2 = None
+    GOJO2 = None
+
+if STRING_3:
+    session3 = StringSession(str(STRING_3))
+    AYIIN3 = TelegramClient(
+        session=session3,
+        api_id=API_KEY,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+    call_py3 = PyTgCalls(GOJO3)
+else:
+    call_py3 = None
+    GOJO3 = None
+
+if STRING_4:
+    session4 = StringSession(str(STRING_4))
+    AYIIN4 = TelegramClient(
+        session=session4,
+        api_id=API_KEY,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+    call_py4 = PyTgCalls(GOJO4)
+else:
+    call_py4 = None
+    GOJO4 = None
+if STRING_5:
+    session5 = StringSession(str(STRING_5))
+    AYIIN5 = TelegramClient(
+        session=session5,
+        api_id=API_KEY,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+    call_py5 = PyTgCalls(GOJO5)
+else:
+    call_py5 = None
+    GOJO5 = None
+
+if STRING_6:
+    session6 = StringSession(str(STRING_6))
+    AYIIN6 = TelegramClient(
+        session=session6,
+        api_id=API_KEY,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+    call_py6 = PyTgCalls(GOJO6)
+else:
+    call_py6 = None
+    GOJO6 = None
+
+if STRING_7:
+    session7 = StringSession(str(STRING_7))
+    AYIIN7 = TelegramClient(
+        session=session7,
+        api_id=API_KEY,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+    call_py7 = PyTgCalls(GOJO7)
+else:
+    call_py7 = None
+    GOJO7 = None
+
+if STRING_8:
+    session8 = StringSession(str(STRING_8))
+    AYIIN8 = TelegramClient(
+        session=session8,
+        api_id=API_KEY,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+    call_py8 = PyTgCalls(GOJO8)
+else:
+    call_py8 = None
+    GOJO8 = None
+
+if STRING_9:
+    session9 = StringSession(str(STRING_9))
+    AYIIN9 = TelegramClient(
+        session=session9,
+        api_id=API_KEY,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+    call_py9 = PyTgCalls(GOJO9)
+else:
+    call_py9 = None
+    GOJO9 = None
+
+if STRING_10:
+    session10 = StringSession(str(STRING_10))
+    AYIIN10 = TelegramClient(
+        session=session10,
+        api_id=API_KEY,
+        api_hash=API_HASH,
+        connection=ConnectionTcpAbridged,
+        auto_reconnect=True,
+        connection_retries=None,
+    )
+    call_py10 = PyTgCalls(GOJO10)
+else:
+    call_py10 = None
+    GOJO10 = None
 
 async def check_botlog_chatid() -> None:
     if not BOTLOG_CHATID:
