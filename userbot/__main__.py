@@ -19,7 +19,7 @@ from userbot.clients import pocong_userbot_on, multigojo
 from userbot import CMD_HANDLER as cmd
 from userbot import LOGS, bot, branch, call_py
 from userbot.modules import ALL_MODULES
-from userbot.utils import GojoDB, HOSTED_ON, autopilot, autobot, checking
+from userbot.utils import GojoDB, HOSTED_ON, autopilot, autobot, checking, gojo_version
 
 try:
     bot.start()
@@ -47,7 +47,18 @@ LOGS.info(
     f"Jika {user.first_name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/GojoSupport"
 )
 
-LOGS.info(f"Gojo-Userbot ⚙️ V{BOT_VER} [🔥 BERHASIL DIAKTIFKAN! 🔥]")
+LOGS.info(f"Total Clients = {total} User")
+    LOGS.info(f"Python Version - {python_version()}")
+    LOGS.info(f"Telethon Version - {version.__version__} [Layer: {LAYER}]")
+    LOGS.info(f"PyTgCalls Version - {pytgcalls.__version__}")
+    LOGS.info(f"Userbot Version - {ubotversion} •[{adB.name}]•")
+    LOGS.info(f"Gojo Version - {gojo_version} •[{HOSTED_ON}]•")
+    LOGS.info("[✨ BERHASIL DIAKTIFKAN! ✨]")
+except (ConnectionError, KeyboardInterrupt, NotImplementedError, SystemExit):
+    pass
+except BaseException as e:
+    LOGS.info(str(e), exc_info=True)
+    sys.exit(1)
 
 if not BOTLOG_CHATID:
     LOGS.info(
